@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vishak's Portfolio</title>
+    <style>
+        @font-face {
+            font-family: 'Gambarino Regular';
+            src: url('https://fonts.cdnfonts.com/s/62403/Gambarino.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Switzer Light';
+            src: url('https://fonts.cdnfonts.com/s/23244/SwitzerLight.woff') format('woff');
+            font-weight: 300;
+            font-style: normal;
+        }
+
+        :root {
+            --margin-top: 30px;
+            --margin-right: 30px;
+            --margin-bottom: 30px;
+            --margin-left: 30px;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #004459; /* Keep original background color */
+            height: 600vh;
+            font-family: 'Gambarino Regular', sans-serif;
+            overflow-x: hidden;
+            transition: background-color 0.4s ease;
+            scroll-behavior: smooth;
+        }
+
+        .heading {
+            color: #F3FFFD;
+            font-size: 200px;
+            margin-top: var(--margin-top);
+            margin-right: var(--margin-right);
+            margin-bottom: var(--margin-bottom);
+            margin-left: var(--margin-left);
+            line-height: 159px;
+            letter-spacing: -7px;
+        }
+
+        .buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            z-index: 10;
+        }
+
+        .button {
+            width: 100px;
+            height: 48px;
+            background-color: #1D6880;
+            color: #F3FFFD;
+            font-family: 'Switzer Light', sans-serif;
+            font-size: 16px;
+            border: none;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            border-radius: 25px;
+        }
+
+        .button:hover {
+            transform: scale(1.1);
+        }
+
+        .footer-left, .footer-middle, .footer-right {
+            position: absolute;
+            font-family: 'Switzer Light', sans-serif;
+            font-size: 15px;
+            color: #F3FFFD;
+        }
+
+        .footer-left {
+            bottom: 10px;
+            left: 20px;
+        }
+
+        .footer-middle {
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: hover 3.5s ease-in-out infinite;
+            font-size: 17px;
+        }
+
+        .footer-right {
+            bottom: 10px;
+            right: 20px;
+        }
+
+        @keyframes hover {
+            0% { transform: translate(-50%, 0); }
+            50% { transform: translate(-50%, -20px); }
+            100% { transform: translate(-50%, 0); }
+        }
+
+        .about-text {
+            position: fixed;
+            top: 30%;
+            left: 45%;
+            transform: translate(-50%, -100%);
+            font-family: 'Gambarino Regular', sans-serif;
+            font-size: 150px;
+            color: #1D6880;
+            opacity: 0;
+            transition: opacity 1.5s ease, transform 1.5s ease;
+        }
+
+        .description-text {
+            position: fixed;
+            top: 485px;
+            left: 50%;
+            transform: translate(-50%, -100%);
+            width: 800px;
+            font-family: 'Switzer Light', sans-serif;
+            font-size: 20px;
+            color: #1D6880;
+            opacity: 0;
+            transition: opacity 1.5s ease, transform 1.5s ease;
+        }
+
+        .projects-heading {
+            font-family: 'Gambarino Regular';
+            font-size: 150px;
+            color: #1D6880;
+            position: relative;
+            margin-left: 1.3%;
+            margin-top: 2900px;
+            letter-spacing: -7px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1.5s ease, transform 1.5s ease;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .image-placeholder {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            background-image: url('https://i.pinimg.com/564x/f1/76/eb/f176ebead098a54a7ce8249273c822db.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 20px;
+            margin: 15px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease, transform 0.4s ease;
+        }
+
+        .image-placeholder:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(29, 104, 128, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            border-radius: 20px;
+        }
+
+        .image-placeholder:hover .image-overlay {
+            opacity: 1;
+        }
+
+        .overlay-text {
+            font-family: 'Switzer Light', sans-serif; /* Change the font here */
+            color: #F3FFFD; /* Optional: Adjust text color */
+            font-size: 24px; /* Optional: Adjust font size */
+        }
+
+        /* New styles for Hire Me text */
+        .hire-me-container {
+            position: relative; /* Position relative for proper placement */
+            left: 84%; /* Set left to 84% */
+            margin-top: 800px; /* Space above the text */
+            transform: translateX(-50%); /* Center alignment correction */
+            font-family: 'Gambarino Regular'; /* Font family */
+            font-size: 180px; /* Font size */
+            color: #F3FFFD; /* Font color */
+            transition: left 0.4s ease; /* Smooth transition for adjustments */
+        }
+
+        /* New styles for social media texts */
+        .social-media {
+            font-family: 'Switzer Light';
+            font-size: 24px;
+            color: #F3FFFD;
+            display: inline-block; /* Keep texts in a row */
+            margin-right: 15px; /* Space between texts */
+            transition: transform 0.3s ease; /* Transition for hover effect */
+        }
+
+        .social-media:hover {
+            transform: scale(1.1); /* Hover effect */
+        }
+
+        .website-text {
+            font-family: 'Switzer Light'; /* Change font here */
+            font-size: 20px; /* Size set as requested */
+            margin-left: 28px; /* Left margin */
+            margin-top: 320px; /* Top margin */
+            color: #F3FFFD; /* Font color */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="heading">
+        I'm Vishak,<br>
+        a Designer, 20
+    </div>
+
+    <div class="buttons" id="buttonContainer">
+        <button class="button">Home Page</button>
+        <button class="button" id="aboutButton">About Me</button>
+        <button class="button">Projects</button>
+        <button class="button">Hire Me</button>
+    </div>
+
+    <div class="footer-left">Vishak Vineeth</div>
+    <div class="footer-middle">SCROLL FOR MORE</div>
+    <div class="footer-right">last updated: 2024</div>
+
+    <div class="about-text" id="aboutSection">
+        About Me
+    </div>
+    
+    <div class="description-text" id="descriptionText">
+        I am a Design enthusiast with a passion for crafting intuitive and visually appealing user experiences. As a third-year UI/UX design student based in Bangalore, India, I'm dedicated to blending creativity and technical expertise to deliver exceptional digital products. My background in graphic design adds a unique dimension to my work, allowing me to create visually stunning interfaces that seamlessly integrate with user needs.
+    </div>
+
+    <div class="projects-heading" id="projectsHeading">
+        Projects
+    </div>
+
+    <div class="image-container">
+        <div class="image-placeholder">
+            <div class="image-overlay">
+                <div class="overlay-text">Image Placeholder 1</div>
+            </div>
+        </div>
+        <div class="image-placeholder">
+            <div class="image-overlay">
+                <div class="overlay-text">Image Placeholder 2</div>
+            </div>
+        </div>
+        <div class="image-placeholder">
+            <div class="image-overlay">
+                <div class="overlay-text">Image Placeholder 3</div>
+            </div>
+        </div>
+        <div class="image-placeholder">
+            <div class="image-overlay">
+                <div class="overlay-text">Image Placeholder 4</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hire Me text -->
+    <div class="hire-me-container" id="hireMeText">Hire Me</div>
+    
+    <!-- Social Media Links -->
+    <div class="social-media-links">
+        <span class="social-media">Instagram</span>
+        <span class="social-media">Twitter</span>
+        <span class="social-media">LinkedIn</span>
+        <span class="social-media">Gmail.com</span>
+    </div>
+    
+    <!-- Website text -->
+    <div class="website-text">www.vishak.com_</div>
+
+    <script>
+        // Listen for the scroll event
+        window.addEventListener('scroll', function () {
+            let scrollPosition = window.scrollY;
+            let windowHeight = window.innerHeight;
+            let documentHeight = document.body.offsetHeight;
+
+            let fadeOutEffect = 1 - Math.min(scrollPosition / (windowHeight * 0.5), 1);
+            let translateY = Math.min(scrollPosition * 0.5, 150); // Control upward movement
+
+            if (scrollPosition < windowHeight * 0.5) {
+                document.body.style.backgroundColor = '#004459'; // Keep initial color
+                document.body.style.transition = 'background-color 0.4s ease';
+            } else {
+                document.body.style.backgroundColor = '#F3FFFD'; // Change to light color after home section
+            }
+
+            // Change to dark teal at the end of the page
+            if (scrollPosition + windowHeight >= documentHeight) {
+                document.body.style.backgroundColor = '#004459'; // Change to dark teal at the end
+            }
+
+            document.querySelector('.heading').style.transform = `translateY(-${translateY}px)`;
+            document.querySelector('.heading').style.opacity = fadeOutEffect;
+
+            let aboutText = document.getElementById('aboutSection');
+            let descriptionText = document.getElementById('descriptionText');
+            let fadeInPoint = windowHeight * 1.1;
+
+            if (scrollPosition > fadeInPoint) {
+                aboutText.style.opacity = 1;
+                aboutText.style.transform = `translate(-50%, 0)`;
+                descriptionText.style.opacity = 1;
+                descriptionText.style.transform = `translate(-50%, 0)`;
+            } else {
+                aboutText.style.opacity = 0;
+                aboutText.style.transform = 'translate(-50%, -100%)';
+                descriptionText.style.opacity = 0;
+                descriptionText.style.transform = 'translate(-50%, -100%)';
+            }
+
+            let fadeOutPoint = windowHeight * 2.1;
+            if (scrollPosition > fadeOutPoint) {
+                aboutText.style.opacity = 0; // Fade out
+                descriptionText.style.opacity = 0; // Fade out
+                aboutText.style.transform = 'translate(-50%, -100%)'; // Move up
+                descriptionText.style.transform = 'translate(-50%, -100%)'; // Move up
+            }
+
+            // Fade in Projects heading at 3000px
+            let projectsHeading = document.getElementById('projectsHeading');
+            let projectsFadeInPoint = 2800;
+
+            if (scrollPosition > projectsFadeInPoint) {
+                projectsHeading.style.opacity = 1; // Fully visible
+                projectsHeading.style.transform = 'translateY(0)'; // Move to its original position
+
+                // Fade in image placeholders one by one
+                const placeholders = document.querySelectorAll('.image-placeholder');
+                placeholders.forEach((placeholder, index) => {
+                    const delay = index * 10; // Delay for each placeholder
+                    if (scrollPosition > projectsFadeInPoint + index * 100) { // Start fading in based on scroll position
+                        placeholder.style.opacity = 1; // Fully visible
+                        placeholder.style.transform = 'translateY(0)'; // Reset translate for animation
+                    } else {
+                        placeholder.style.opacity = 0; // Hidden
+                        placeholder.style.transform = 'translateY(50px)'; // Start slightly below
+                    }
+                });
+            } else {
+                projectsHeading.style.opacity = 0; // Hidden
+                projectsHeading.style.transform = 'translateY(50px)'; // Start slightly below
+
+                // Reset placeholders when projects heading is not visible
+                const placeholders = document.querySelectorAll('.image-placeholder');
+                placeholders.forEach(placeholder => {
+                    placeholder.style.opacity = 0; // Hidden
+                    placeholder.style.transform = 'translateY(50px)'; // Start slightly below
+                });
+            }
+        });
+    </script>
+</body>
+</html>
