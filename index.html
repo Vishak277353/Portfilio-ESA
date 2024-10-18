@@ -198,7 +198,7 @@
         .hire-me-container {
             position: relative; /* Position relative for proper placement */
             left: 84%; /* Set left to 84% */
-            margin-top: 800px; /* Space above the text */
+            margin-top: 1400px; /* Space above the text */
             transform: translateX(-50%); /* Center alignment correction */
             font-family: 'Gambarino Regular'; /* Font family */
             font-size: 180px; /* Font size */
@@ -206,27 +206,36 @@
             transition: left 0.4s ease; /* Smooth transition for adjustments */
         }
 
-        /* New styles for social media texts */
-        .social-media {
-            font-family: 'Switzer Light';
-            font-size: 24px;
-            color: #F3FFFD;
-            display: inline-block; /* Keep texts in a row */
-            margin-right: 15px; /* Space between texts */
-            transition: transform 0.3s ease; /* Transition for hover effect */
+        /* New styles for social media links */
+        .social-links {
+            display: flex; /* Flexbox for horizontal layout */
+            justify-content: center; /* Center the links */
+            margin-top: 20px; /* Space above the links */
         }
 
-        .social-media:hover {
-            transform: scale(1.1); /* Hover effect */
-        }
-
-        .website-text {
-            font-family: 'Switzer Light'; /* Change font here */
-            font-size: 20px; /* Size set as requested */
-            margin-left: 28px; /* Left margin */
-            margin-top: 320px; /* Top margin */
+        .social-link {
+            font-family: 'Switzer Light'; /* Font family */
+            font-size: 24px; /* Font size */
             color: #F3FFFD; /* Font color */
+            margin: 0 10px; /* Space between links */
+            transition: transform 0.3s ease; /* Smooth transition */
         }
+
+        .social-link:hover {
+            transform: scale(1.1); /* Scale up on hover */
+        }
+
+        /* Style for the website text */
+        .website-text {
+            font-family: 'Switzer Light'; /* Change the font here */
+            font-size: 20px; /* Adjust font size */
+            color: #F3FFFD; /* Adjust text color */
+            margin-top: 320px; /* Adjust top margin */
+            margin-left: 46.5%; /* Adjust left margin */
+            margin-bottom: 20px;
+            padding-bottom: 30px;
+        }
+
     </style>
 </head>
 <body>
@@ -237,10 +246,10 @@
     </div>
 
     <div class="buttons" id="buttonContainer">
-        <button class="button">Home Page</button>
+        <button class="button" id="homeButton">Home Page</button>
         <button class="button" id="aboutButton">About Me</button>
-        <button class="button">Projects</button>
-        <button class="button">Hire Me</button>
+        <button class="button" id="projectsButton">Projects</button>
+        <button class="button" id="hireButton">Hire Me</button>
     </div>
 
     <div class="footer-left">Vishak Vineeth</div>
@@ -252,51 +261,117 @@
     </div>
     
     <div class="description-text" id="descriptionText">
-        I am a Design enthusiast with a passion for crafting intuitive and visually appealing user experiences. As a third-year UI/UX design student based in Bangalore, India, I'm dedicated to blending creativity and technical expertise to deliver exceptional digital products. My background in graphic design adds a unique dimension to my work, allowing me to create visually stunning interfaces that seamlessly integrate with user needs.
+        I am a Design enthusiast with a passion for crafting intuitive and visualIly appealing user experiences. As a third-year UI/UX design student based in Bangalore, India, I'm dedicated to blending creativity and technical expertise to deliver exceptional digital products. My background in graphic design adds a unique dimension to my work, allowing me to create visually stunning interfaces that seamlessly integrate with user needs.
     </div>
 
     <div class="projects-heading" id="projectsHeading">
         Projects
     </div>
 
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Projects - Home</title>
+    <style>
+        .image-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .image-button {
+            position: relative;
+            width: 585px;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            border: none;
+            border-radius: 10px;
+            margin: 20px 20px 20px 40px; /* top right bottom left */
+            cursor: pointer;
+            transition: transform 0.4s ease;
+        }
+
+
+        .image-button:hover {
+            transform: scale(1.05);
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Buttons acting as project previews -->
     <div class="image-container">
-        <div class="image-placeholder">
-            <div class="image-overlay">
-                <div class="overlay-text">Image Placeholder 1</div>
-            </div>
-        </div>
-        <div class="image-placeholder">
-            <div class="image-overlay">
-                <div class="overlay-text">Image Placeholder 2</div>
-            </div>
-        </div>
-        <div class="image-placeholder">
-            <div class="image-overlay">
-                <div class="overlay-text">Image Placeholder 3</div>
-            </div>
-        </div>
-        <div class="image-placeholder">
-            <div class="image-overlay">
-                <div class="overlay-text">Image Placeholder 4</div>
-            </div>
-        </div>
+        <button class="image-button" id="button1" style="background-image: url('https://i.pinimg.com/564x/f1/76/eb/f176ebead098a54a7ce8249273c822db.jpg');" onclick="goToProject(1)">
+            <div class="image-overlay">Project 1</div>
+        </button>
+        <button class="image-button" id="button2" style="background-image: url('https://i.pinimg.com/564x/f1/76/eb/f176ebead098a54a7ce8249273c822db.jpg');" onclick="goToProject(2)">
+            <div class="image-overlay">Project 2</div>
+        </button>
+        <button class="image-button" id="button3" style="background-image: url('https://i.pinimg.com/564x/f1/76/eb/f176ebead098a54a7ce8249273c822db.jpg');" onclick="goToProject(3)">
+            <div class="image-overlay">Project 3</div>
+        </button>
+        <button class="image-button" id="button4" style="background-image: url('https://i.pinimg.com/564x/f1/76/eb/f176ebead098a54a7ce8249273c822db.jpg');" onclick="goToProject(4)">
+            <div class="image-overlay">Project 4</div>
+        </button>
+        <button class="image-button" id="button5" style="background-image: url('https://i.pinimg.com/564x/f1/76/eb/f176ebead098a54a7ce8249273c822db.jpg');" onclick="goToProject(5)">
+            <div class="image-overlay">Project 5</div>
+        </button>
+        <button class="image-button" id="button6" style="background-image: url('https://i.pinimg.com/564x/f1/76/eb/f176ebead098a54a7ce8249273c822db.jpg');" onclick="goToProject(6)">
+            <div class="image-overlay">Project 6</div>
+        </button>
     </div>
 
-    <!-- Hire Me text -->
+    <script>
+        // Function to navigate to the new page and scroll to the corresponding section
+        function goToProject(projectNumber) {
+    window.location.href = `projects.html#project${projectNumber}Section`;
+}
+
+    </script>
+</body>
+</html>
+
+
+    <!-- Hire Me text positioned below the last image placeholder -->
     <div class="hire-me-container" id="hireMeText">Hire Me</div>
-    
-    <!-- Social Media Links -->
-    <div class="social-media-links">
-        <span class="social-media">Instagram</span>
-        <span class="social-media">Twitter</span>
-        <span class="social-media">LinkedIn</span>
-        <span class="social-media">Gmail.com</span>
+
+    <!-- Social Links -->
+    <div class="social-links">
+        <div class="social-link">Instagram</div>
+        <div class="social-link">Twitter</div>
+        <div class="social-link">LinkedIn</div>
+        <div class="social-link">Gmail.com</div>
     </div>
-    
-    <!-- Website text -->
+
+    <!-- Website Text -->
     <div class="website-text">www.vishak.com_</div>
 
     <script>
+        // Function to scroll to the About section
+        document.getElementById('aboutButton').onclick = function() {
+            window.scrollTo({ top: 1800, behavior: 'smooth' });
+        };
+        
+
         // Listen for the scroll event
         window.addEventListener('scroll', function () {
             let scrollPosition = window.scrollY;
@@ -377,6 +452,17 @@
                 });
             }
         });
+        document.getElementById('projectsButton').onclick = function() {
+            window.scrollTo({ top: 3250, behavior: 'smooth' });
+        };
+
+        document.getElementById('homeButton').onclick = function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+        
+        document.getElementById('hireButton').onclick = function() {
+            window.scrollTo({ top: 5400, behavior: 'smooth' });
+        };
     </script>
 </body>
 </html>
